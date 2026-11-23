@@ -1,57 +1,49 @@
 import React, { useState } from "react";
 
-// ==============================
-// CONTACT COMPONENT
-// ==============================
-// Ye contact form hai
-// useState se form data track karta hai
-// Event handling se form submit karta hai
+// Handles the contact form using useState and events.
 
 const Contact = () => {
-  // Form ka data track karna - ek object mein saara data
+  // Stores all form fields.
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  // Kya form submit hua? Success message dikhane ke liye
+  // Tracks form submission status.
   const [submitted, setSubmitted] = useState(false);
 
-  // Input change hone par ye function chalta hai
-  // Event Handling - onChange event
+  // Handles input changes.
   const handleChange = (event) => {
-    // event.target.name = input ka name attribute
-    // event.target.value = jo type kiya
     setFormData({
-      ...formData, // baaki fields same rakhna (spread operator)
-      [event.target.name]: event.target.value, // sirf ye field update karo
+      ...formData, // Keeps other fields unchanged.
+      [event.target.name]: event.target.value, // Updates the current field.
     });
   };
 
-  // Form submit hone par ye function chalta hai
+  // Handles form submission.
   const handleSubmit = (event) => {
-    event.preventDefault(); // Page reload rokna
+    event.preventDefault(); // Prevents page reload.
 
-    // Validation - kya saari fields bhari hain?
+    // Checks if all fields are filled.
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please fill all fields!");
-      return; // function rok do
+      return; // Stops the function.
     }
 
-    // Yahan normally API call hoti - filhaal console mein dikhate hain
+    // Logs form data (API call can be added here).
     console.log("Form submitted:", formData);
 
-    // Success state set karo
+    // Updates submission status.
     setSubmitted(true);
 
-    // Form reset karo
+    // Resets the form fields.
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
     <section className="contact-section" id="contact">
-      {/* Section Header */}
+      {/* SECTION HEADER */}
       <div className="section-header">
         <p className="sub-label">Contact Us</p>
         <h2 className="section-heading">Get In Touch With Us</h2>
@@ -60,7 +52,7 @@ const Contact = () => {
         </p>
       </div>
 
-      {/* Agar form submit hua toh thank you dikhao */}
+      {/* SUCCESS MESSAGE */}
       {submitted ? (
         <div className="success-message">
           <h3>✅ Thank You!</h3>
@@ -70,19 +62,19 @@ const Contact = () => {
           </button>
         </div>
       ) : (
-        /* Form */
+        /* CONTACT FORM */
         <form className="contact-form" onSubmit={handleSubmit}>
-          {/* Name Input */}
+          {/* NAME INPUT */}
           <input
             type="text"
             name="name"
             placeholder="Your Name"
             value={formData.name}
-            onChange={handleChange} // har key press pe handleChange chale
+            onChange={handleChange}
             className="form-input"
           />
 
-          {/* Email Input */}
+          {/* EMAIL INPUT */}
           <input
             type="email"
             name="email"
@@ -92,7 +84,7 @@ const Contact = () => {
             className="form-input"
           />
 
-          {/* Message Textarea */}
+          {/* MESSAGE INPUT */}
           <textarea
             name="message"
             placeholder="Your Message"
@@ -102,7 +94,7 @@ const Contact = () => {
             rows={4}
           />
 
-          {/* Submit Button */}
+          {/* SUBMIT BUTTON */}
           <button type="submit" className="btn-orange">
             Send Message
           </button>

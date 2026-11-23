@@ -1,14 +1,12 @@
+
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-// ==============================
 // TESTIMONIAL COMPONENT
-// ==============================
-// Customers ke reviews dikhata hai
-// useState se current review track karta hai
+// Displays customer reviews using useState.
 
 const Testimonial = ({ johnImage }) => {
-  // Sabhi reviews ka data - array of objects
+  // Reviews stored in an array of objects.
   const reviews = [
     {
       id: 1,
@@ -24,7 +22,7 @@ const Testimonial = ({ johnImage }) => {
       review:
         "Best food delivery app I have ever used! The food always arrives hot and fresh. Highly recommend to everyone!",
       stars: 5,
-      image: null, // koi image nahi toh initials dikhate hain
+      image: null, // Shows initials if no image is available.
     },
     {
       id: 3,
@@ -36,12 +34,11 @@ const Testimonial = ({ johnImage }) => {
     },
   ];
 
-  // currentIndex = abhi konsa review dikh raha hai (0, 1, ya 2)
+  // Tracks the current review index.
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Next review dikhane ka function
+  // Shows the next review.
   const goToNext = () => {
-    // Agar last review hai toh pehle pe wapas jao, warna agle pe jao
     if (currentIndex === reviews.length - 1) {
       setCurrentIndex(0);
     } else {
@@ -49,7 +46,7 @@ const Testimonial = ({ johnImage }) => {
     }
   };
 
-  // Previous review dikhane ka function
+  // Shows the previous review.
   const goToPrev = () => {
     if (currentIndex === 0) {
       setCurrentIndex(reviews.length - 1);
@@ -58,22 +55,22 @@ const Testimonial = ({ johnImage }) => {
     }
   };
 
-  // Current review jo dikhana hai
+  // Gets the current review.
   const current = reviews[currentIndex];
 
   return (
     <section className="testimonial-section" id="testimonials">
-      {/* Section Header */}
+      {/* SECTION HEADER */}
       <div className="section-header">
         <p className="sub-label">Testimonials</p>
         <h2 className="section-heading">What Our Customers Say</h2>
       </div>
 
-      {/* Review Card */}
+      {/* REVIEW CARD */}
       <div className="review-card">
-        {/* Stars */}
+        {/* STAR RATING */}
         <div className="stars">
-          {/* Array(5) se 5 stars banate hain */}
+          {/* Renders stars based on the rating. */}
           {Array(current.stars)
             .fill(0)
             .map((_, i) => (
@@ -81,23 +78,23 @@ const Testimonial = ({ johnImage }) => {
             ))}
         </div>
 
-        {/* Review Text */}
+        {/* REVIEW TEXT */}
         <p className="review-text">"{current.review}"</p>
 
-        {/* Reviewer Info */}
+        {/* REVIEWER DETAILS */}
         <div className="reviewer">
-          {/* Image ya initials */}
+          {/* Shows image or initials. */}
           {current.image ? (
             <img src={current.image} alt={current.name} className="reviewer-img" />
           ) : (
             <div className="reviewer-initials">
-              {current.name.charAt(0)} {/* Pehla letter */}
+              {current.name.charAt(0)} {/* First letter */}
             </div>
           )}
           <h4>{current.name}</h4>
         </div>
 
-        {/* Navigation Buttons */}
+        {/* NAVIGATION BUTTONS */}
         <div className="review-nav">
           <button onClick={goToPrev} className="nav-btn">← Prev</button>
           <span>

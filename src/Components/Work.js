@@ -1,14 +1,10 @@
 import React from "react";
 
-// ==============================
-// WORK COMPONENT - "How It Works"
-// ==============================
-// Ye section batata hai app kaise kaam karta hai
-// Yahan hum ek array of objects use karenge - props ki jagah
+// Explains how the app works.
 
+// Receives images as props.
 const Work = ({ pickImage, deliveryImage, chooseImage }) => {
-  // Steps ki list - array of objects
-  // Har object mein: number, title, description, image
+  // Steps data stored in an array of objects.
   const steps = [
     {
       id: 1,
@@ -35,7 +31,7 @@ const Work = ({ pickImage, deliveryImage, chooseImage }) => {
 
   return (
     <section className="work-section" id="how it works">
-      {/* Section Header */}
+      {/* SECTION HEADER */}
       <div className="section-header">
         <p className="sub-label">How It Works</p>
         <h2 className="section-heading">Simple Steps To Get Your Food</h2>
@@ -44,22 +40,22 @@ const Work = ({ pickImage, deliveryImage, chooseImage }) => {
         </p>
       </div>
 
-      {/* Cards - steps.map() se automatically 3 cards ban jayenge */}
+      {/* STEP CARDS */}
       <div className="work-cards">
         {steps.map((step) => (
-          // Har step ke liye ek card
+          // Renders a card for each step.
           <div key={step.id} className="work-card">
-            {/* Step number badge */}
+            {/* STEP NUMBER */}
             <div className="step-number">Step {step.id}</div>
 
-            {/* Emoji or Image */}
+            {/* STEP IMAGE OR EMOJI */}
             {step.image ? (
               <img src={step.image} alt={step.title} className="step-image" />
             ) : (
               <div className="step-emoji">{step.emoji}</div>
             )}
 
-            {/* Text */}
+            {/* STEP DETAILS */}
             <h3>{step.title}</h3>
             <p>{step.desc}</p>
           </div>
