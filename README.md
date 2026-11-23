@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+#Live link of project
+https://github.com/DevAreeba123/Resturant-Landing-Page
+
+>>>>>>> f015fc53b813dc2e117d04270c186c466b1a3bdb
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
